@@ -1,0 +1,17 @@
+{
+  "host": "blah",
+  "username": "blah",
+  "password": "blah",
+  "port": 1,
+  "emails": [
+    {
+      "fromAdr": "info@email.com",
+      "fromNme": "Info",
+      "subject": "Account Info",
+      "to": [
+        "person@email.com"
+      ],
+      "body": "Some random info about your account."
+    }
+  ]
+}
