@@ -1,11 +1,15 @@
 package net.portalblock.automailer;
 
+import it.sauronsoftware.cron4j.CronParser;
+import it.sauronsoftware.cron4j.Scheduler;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by portalBlock on 10/2/2014.
@@ -36,10 +40,13 @@ public class AutoMailer {
                 });
 
         AutoMailer mailer = new AutoMailer();
+        Scheduler s = new Scheduler();
         for(Email email : config){
-            for(String to : email.getTo()){
-                mailer.mail(email, to);
-            }
+            s.schedule(email.getCron(), new MailTask(mailer, email));
+        }
+        s.start();
+        while (true){
+            Thread.sleep(TimeUnit.DAYS.toMillis(1));
         }
     }
 

@@ -8,6 +8,7 @@
       "fromAdr": "info@email.com",
       "fromNme": "Info",
       "subject": "Account Info",
+      "cronTime": "* * * * *",
       "to": [
         "person@email.com"
       ],

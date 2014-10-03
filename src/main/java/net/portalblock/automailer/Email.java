@@ -15,7 +15,7 @@ import java.util.List;
 public class Email {
 
     @Getter
-    private String fromAdr = "you@didnt.set", fromNme = "you-didnt-set", subject = "No Subject Set", body = "No message set!";
+    private String fromAdr = "you@didnt.set", fromNme = "you-didnt-set", subject = "No Subject Set", body = "No message set!", cron = "";
 
     @Getter
     private List<String> to = new ArrayList<>();
@@ -30,6 +30,7 @@ public class Email {
                 jsonObject.getString("fromNme"),
                 jsonObject.getString("subject"),
                 jsonObject.getString("body"),
+                jsonObject.getString("cronTime"),
                 toAdr
         );
     }
